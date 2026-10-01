@@ -1,0 +1,9 @@
+version: 2
+
+models: []
+# Document and test each staging model here, e.g.
+#   - name: stg_attio__companies
+#     description: One row per Attio company record.
+#     columns:
+#       - name: company_id
+#         data_tests: [unique, not_null]

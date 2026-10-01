@@ -1,0 +1,5 @@
+version: 2
+
+models: []
+# Facts and dimensions built from staging, e.g. dim_companies, fct_deals.
+# Semantic models in models/semantic/ should ref() these.

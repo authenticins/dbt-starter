@@ -1,0 +1,46 @@
+version: 2
+
+# Define your semantic models and metrics here (MetricFlow / dbt Semantic Layer).
+# Docs: https://docs.getdbt.com/docs/build/semantic-models
+#
+# Example (uncomment it and change it to match the marts you build):
+#
+# semantic_models:
+#   - name: deals
+#     description: One row per deal in Attio.
+#     model: ref('fct_deals')
+#     defaults:
+#       agg_time_dimension: created_at
+#     entities:
+#       - name: deal
+#         type: primary
+#         expr: deal_id
+#       - name: company
+#         type: foreign
+#         expr: company_id
+#     dimensions:
+#       - name: created_at
+#         type: time
+#         type_params:
+#           time_granularity: day
+#       - name: stage
+#         type: categorical
+#     measures:
+#       - name: deal_count
+#         agg: count
+#         expr: deal_id
+#       - name: deal_value
+#         agg: sum
+#         expr: value_amount
+#
+# metrics:
+#   - name: total_deal_value
+#     label: Total deal value
+#     type: simple
+#     type_params:
+#       measure: deal_value
+#   - name: deals_created
+#     label: Deals created
+#     type: simple
+#     type_params:
+#       measure: deal_count

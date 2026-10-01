@@ -1,0 +1,33 @@
+# dbt reads this file from the project folder. Credentials come from
+# environment variables, so this file never contains secrets. Copy .env.example
+# to .env, fill it in, then run:  set -a && source .env && set +a
+attio_analytics:
+  target: dev
+  outputs:
+    # Default: the service user with key-pair authentication (no MFA)
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_SERVICE_USER') }}"
+      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH', '') }}"
+      private_key_passphrase: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PASSPHRASE', '') }}"
+      role: ATTIO_CANDIDATE_ROLE
+      warehouse: ATTIO_CANDIDATE_WH
+      database: PLAYGROUND_DB
+      schema: DE_INTERVIEW
+      threads: 4
+      client_session_keep_alive: false
+
+    # Fallback: your Snowsight (person) user with password and MFA. The MFA token is cached so you aren't
+    # prompted on every connection. Use it with: dbt build --target dev_password
+    dev_password:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD', '') }}"
+      authenticator: username_password_mfa
+      role: ATTIO_CANDIDATE_ROLE
+      warehouse: ATTIO_CANDIDATE_WH
+      database: PLAYGROUND_DB
+      schema: DE_INTERVIEW
+      threads: 4

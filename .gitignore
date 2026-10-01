@@ -1,0 +1,11 @@
+target/
+dbt_packages/
+logs/
+.user.yml
+.env
+*.p8
+*.pem
+.venv/
+venv/
+__pycache__/
+.DS_Store

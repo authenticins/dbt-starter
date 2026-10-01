@@ -1,0 +1,2 @@
+# Installs dbt-core, dbt-snowflake and the MetricFlow CLI (`mf`). Tested with dbt-core 1.12.5 / dbt-snowflake 1.12.1
+dbt-metricflow[dbt-snowflake]
